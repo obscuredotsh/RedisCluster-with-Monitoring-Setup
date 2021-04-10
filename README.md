@@ -46,6 +46,8 @@ slavenode1 ansible_ssh_host=23.92.28.137 master_id=2
 slavenode2 ansible_ssh_host=173.230.142.155 master_id=0
 slavenode3 ansible_ssh_host=50.116.35.169 master_id=1
 
+[prometheus]
+34.220.59.171 ansible_ssh_user=ec2-user ansible_python_interpreter=/usr/bin/python
 
 
 [redis_cluster:children]
