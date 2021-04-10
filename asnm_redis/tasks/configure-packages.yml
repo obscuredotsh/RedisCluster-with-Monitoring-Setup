@@ -1,0 +1,32 @@
+---
+
+- name: Get sign keys
+  shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - 
+
+- name: Get sign keys
+  shell: sudo apt-key fingerprint 0EBFCD88
+
+- name: adding Repo
+  shell: sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+- name: Install build time dependencies and update repo
+  apt:
+#    name: "build-essential"
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items:
+    - ansible
+    - docker-ce
+    - build-essential
+
+
+- name: install docker-py
+  raw: pip3 install docker
+  when: ansible_os_family == "Debian"
+
+- name: Installing development tools on RedHat System
+  yum:
+    name: "make"
+    state: present
+  when: ansible_os_family == "RedHat"

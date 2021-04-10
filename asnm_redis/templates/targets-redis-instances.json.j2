@@ -1,0 +1,13 @@
+[
+  {
+    "targets": [
+  {% for host in groups['master_nodes'] %}    
+      "redis://{{ hostvars[host]['ansible_ssh_host'] }}:6380",
+  {% endfor %}
+  {% for host in groups['slave_nodes'] %}    
+      "redis://{{ hostvars[host]['ansible_ssh_host'] }}:6379",
+  {% endfor %}        
+    ],
+    "labels": {}
+  }
+]

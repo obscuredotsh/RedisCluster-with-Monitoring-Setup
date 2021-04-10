@@ -1,0 +1,13 @@
+[
+  {
+    "targets": [
+  {% for host in groups['master_nodes'] %}    
+      "{{ hostvars[host]['ansible_ssh_host'] }}:9121",
+  {% endfor %}
+  {% for host in groups['master_nodes'] %}    
+      "{{ hostvars[host]['ansible_ssh_host'] }}:9121",
+  {% endfor %}
+    ],
+    "labels": {}
+  }
+]

@@ -1,0 +1,20 @@
+- name: Copy prometheus j2 template
+  template:
+    src: ../templates/prometheus.yml.j2
+    dest: "/etc/prometheus/prometheus.yml"
+    owner: root
+    group: root
+
+
+- name: Copy prometheus j2 template
+  template:
+    src: ../templates/targets-redis-instances.json.j2
+    dest: "/etc/prometheus/targets-redis-instances.json"
+    owner: root
+    group: root
+
+- name: Restart prometheus service
+  systemd:
+    name: prometheus
+    enabled: yes
+    state: restarted
