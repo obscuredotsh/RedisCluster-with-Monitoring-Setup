@@ -1,6 +1,6 @@
 # RedisCluster-with-Monitoring-Setup
 
-## USE: First RUN TF to provision infrastrecture & then ansible to configure REDIS cluster
+## USE: First RUN TF to provision infrastructure & then ansible to configure REDIS cluster
 
 - cd terraform/resources/aws/us-west-2/prod/
 - terraform init
